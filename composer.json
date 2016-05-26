@@ -1,0 +1,20 @@
+{
+	"name": "vistoyn/json_stream",
+	"type": "library",
+	"description": "PHP json stream parser for big files",
+	"version": "0.1",
+	"homepage": "https://github.com/vistoyn/php-json-stream",
+	"authors": [
+		{
+			"name": "Ildar Bikmamatov",
+			"email": "vistoyn@gmail.com"
+		}
+	],
+	"autoload": {
+		"psr-4": {
+			"vistoyn\\json_stream": "parser.php"
+		}
+	},
+	"require": {
+	}
+}
