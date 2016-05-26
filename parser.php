@@ -1,7 +1,7 @@
 <?
-namespace vistoyn\json_stream;
+namespace vistoyn\json_parser;
 
-class JsonStreamParser{
+class JsonStream{
 	
 	protected $current_path=[];
 	protected $rules=[];
@@ -207,7 +207,7 @@ class JsonStreamParser{
 	}
 }
 
-class JsonStreamParserString extends JsonStreamParser{
+class JsonString extends JsonStream{
 	
 	protected $data = null;
 	protected $pos = -1;

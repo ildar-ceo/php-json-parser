@@ -1,5 +1,5 @@
 {
-	"name": "vistoyn/json_stream",
+	"name": "vistoyn/json_parser",
 	"type": "library",
 	"description": "PHP json stream parser for big files",
 	"version": "0.1",
@@ -12,7 +12,7 @@
 	],
 	"autoload": {
 		"psr-4": {
-			"vistoyn\\json_stream": "parser.php"
+			"vistoyn\\json_parser": "parser.php"
 		}
 	},
 	"require": {
