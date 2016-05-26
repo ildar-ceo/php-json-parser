@@ -1,8 +1,9 @@
 {
 	"name": "vistoyn/json_parser",
 	"type": "library",
-	"description": "PHP json stream parser for big files",
-	"version": "0.2",
+	"license": "MIT",
+	"description": "PHP json parser for big files",
+	"version": "0.3",
 	"homepage": "https://github.com/vistoyn/php-json-stream",
 	"authors": [
 		{
