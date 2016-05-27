@@ -1,6 +1,18 @@
 # PHP json parser for big files
 
-## Example
+## How to install
+
+```
+composer require vistoyn/json_parser
+```
+
+## How to update
+
+```
+composer update vistoyn/json_parser
+```
+
+## How to use
 
 ```php
 use \vistoyn\json_parser\JsonString;
