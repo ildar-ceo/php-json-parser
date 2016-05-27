@@ -6,8 +6,13 @@ class JsonString extends JsonStream{
 	protected $pos = -1;
 	protected $size = 0;
 	
+	public function reset(){
+		$this->pos = -1;
+		$this->look = null;
+	}
+	
 	public function setContent($content){
-		$this->post = -1;
+		$this->reset();
 		$this->data = $content;
 		$this->size = strlen($content);
 	}
@@ -32,4 +37,5 @@ class JsonString extends JsonStream{
 	protected function getBuffer($start){
 		return substr($this->data, $start, $this->pos - $start);
 	}
+	
 }

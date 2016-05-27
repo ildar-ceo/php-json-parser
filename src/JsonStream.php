@@ -8,11 +8,12 @@ class JsonStream{
 	protected function getChar(){
 		return null;
 	}
-	
 	protected function startBuffer(){
 	}
 	protected function getBuffer($start){
 		return null;
+	}
+	public function reset(){
 	}
 	
 	protected function getString($n){
@@ -91,9 +92,9 @@ class JsonStream{
 		$this->matchChar(':');
 		$this->current_path[] = $key;
 		
-		list($start, $rules) = $this->beginRules();
+		//list($start, $rules) = $this->beginRules();
 		$this->matchStatement(false);
-		$this->endRules($s, $rules);
+		//$this->endRules($s, $rules, $this->current_path);
 		
 		array_pop($this->current_path);
 	}
@@ -125,19 +126,17 @@ class JsonStream{
 		$this->matchChar(']');
 	}
 	
-	protected function matchStatement($lookRules = true){
+	protected function matchStatement(){
 		$this->lookNext();
 		
-		if ($lookRules)
-			list($start, $rules) = $this->beginRules();
+		list($start, $rules) = $this->beginRules();
 		
 		if ($this->look == '{') $this->matchObject();
 		if ($this->look == '[') $this->matchArray();
 		else if ($this->look == '"') $this->matchString();
 		else if (is_numeric($this->look)) $this->matchNumber();
 		
-		if ($lookRules)
-			$this->endRules($start, $rules);
+		$this->endRules($start, $rules, $this->current_path);
 		
 		$this->lookNext();
 	}
@@ -149,6 +148,10 @@ class JsonStream{
 		$this->lookNext();
 		$this->matchStatement();
 		
+	}
+	
+	public function cleanRules(){
+		$this->rules = [];
 	}
 	
 	public function addRule($rule, $callback){
@@ -164,13 +167,13 @@ class JsonStream{
 		return [$start, $rules];
 	}
 	
-	public function endRules($start, $rules){
+	public function endRules($start, $rules, $path){
 		if (count($rules) > 0){
 			$content = trim($this->getBuffer($start));
 			
 			foreach ($rules as $rule){
 				$callback = $rule[1];
-				$callback($content);
+				$callback($content, $path);
 			}
 		}
 	}

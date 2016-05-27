@@ -1,8 +1,8 @@
-# PHP json parser for big files
+<?
 
-## Example
+include ('../src/JsonStream.php');
+include ('../src/JsonString.php');
 
-```php
 use \vistoyn\json_parser\JsonString;
 
 
@@ -135,4 +135,3 @@ array(5) {
   string(2) "a5"
 }
 */
-```
